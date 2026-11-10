@@ -1,0 +1,35 @@
+# Eski video klasörü (Türkçe/boşluklu dosya adları içeriyor - Vercel'de çalışmaz)
+videolar/
+
+# Arşiv klasörü
+_arsiv/
+
+# Ofis belgeleri ve notlar
+*.docx
+*.doc
+*.xlsx
+*.mp3
+
+# Windows sistem dosyaları
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# macOS sistem dosyaları
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Geçici dosyalar
+*.tmp
+*.bak
+*.swp
+*~
+
+# Node modülleri (eğer ileride kullanılırsa)
+node_modules/
+
+# Ortam dosyaları
+.env
+.env.local
+

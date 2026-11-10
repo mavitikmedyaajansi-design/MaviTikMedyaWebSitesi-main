@@ -6262,7 +6262,7 @@ ${message}
                 type: "video",
                 category: "icerik",
                 poster: "assets/images/referanslar/ref-icerik-1.jpg",
-                videoSrc: "videolar/icerik-cekimi-1.mp4",
+                videoSrc: "assets/videos/icerik-cekimi-1.mp4",
                 desc: "Sosyal medya ve reels formatında özgün içerik çekimi. Markanın dijital dilini yansıtan, viral potansiyelli 9:16 dikey video prodüksiyonu.",
                 tags: ["videography", "videographer", "keşfetteyiz", "viral", "reels", "sosyalmedya"],
                 droneLabel: "İçerik & Prodüksiyon",
@@ -6280,7 +6280,7 @@ ${message}
                 type: "video",
                 category: "emlak",
                 poster: "assets/images/referanslar/ref-emlak-1.jpg",
-                videoSrc: "videolar/emlak-cekimi.mp4",
+                videoSrc: "assets/videos/emlak-cekimi-1.mp4",
                 desc: "Evsan Gayrimenkul için geniş açılı drone uçuşları, iç mekan akıcı gimbal geçişleri ve profesyonel mimari renk kurgusuyla hazırlanan 4K emlak tanıtım filmi.",
                 tags: ["EvsanGayrimenkul", "EmlakÇekimi", "4KDrone", "MimariÇekim"],
                 droneLabel: "Drone & Gimbal",
@@ -6298,7 +6298,7 @@ ${message}
                 type: "video",
                 category: "emlak",
                 poster: "assets/images/referanslar/ref-emlak-2.jpg",
-                videoSrc: "videolar/emlak-cekimi-2.mp4",
+                videoSrc: "assets/videos/emlak-cekimi-2.mp4",
                 desc: "Evsan Gayrimenkul portföyündeki prestijli konut ve mimari alanların estetiğini, iç mekan aydınlatmasını ve yaşam standardını ortaya koyan 4K sinematik prodüksiyon.",
                 tags: ["EvsanGayrimenkul", "Rezidans", "SinematikKamera", "Gayrimenkul"],
                 droneLabel: "Gimbal & Çekim",
@@ -6316,7 +6316,7 @@ ${message}
                 type: "video",
                 category: "mekan",
                 poster: "assets/images/referanslar/ref-mekan-1.jpg",
-                videoSrc: "videolar/WhatsApp-Video-2026-10-31-at-18.51.30.mp4",
+                videoSrc: "assets/videos/mekan-cekimi-1.mp4",
                 desc: "Mekanın enerjisini, lezzet sunumlarını ve estetik mimari detaylarını sosyal medya ve kurumsal tanıtım için öne çıkaran 4K dinamik video prodüksiyonu.",
                 tags: ["MekanÇekimi", "RestoranTanıtımı", "ReelsKurgu", "SosyalMedya"],
                 droneLabel: "Dinamik Çekim",
@@ -6334,7 +6334,7 @@ ${message}
                 type: "video",
                 category: "urun",
                 poster: "assets/images/referanslar/ref-urun-fixed.jpg",
-                videoSrc: "videolar/urun-cekimi.MOV",
+                videoSrc: "assets/videos/urun-cekimi-1.mov",
                 desc: "Özel stüdyo ışık kurguları, duman efektleri ve dinamik makro detaylarla gerçekleştirilen 9:16 dikey profesyonel nargile ve ürün tanıtım prodüksiyonu.",
                 tags: ["ÜrünÇekimi", "NargileÇekimi", "9:16Reels", "StüdyoProdüksiyon"],
                 droneLabel: "Stüdyo & Işık",
@@ -6353,6 +6353,25 @@ ${message}
             const saved = localStorage.getItem('mavitik_custom_refs');
             if (saved) {
                 MAVI_TIK_REFERENCES = JSON.parse(saved);
+
+                // Video yollarını assets/videos/ klasörüne migrate et (eski videolar/ yollarını düzelt)
+                const videoPathMigrations = {
+                    "videolar/icerik-cekimi-1.mp4": "assets/videos/icerik-cekimi-1.mp4",
+                    "videolar/emlak-cekimi.mp4": "assets/videos/emlak-cekimi-1.mp4",
+                    "videolar/emlak-cekimi-2.mp4": "assets/videos/emlak-cekimi-2.mp4",
+                    "videolar/WhatsApp-Video-2026-10-31-at-18.51.30.mp4": "assets/videos/mekan-cekimi-1.mp4",
+                    "videolar/urun-cekimi.MOV": "assets/videos/urun-cekimi-1.mov"
+                };
+                let videoMigrated = false;
+                for (const [id, ref] of Object.entries(MAVI_TIK_REFERENCES)) {
+                    if (ref.videoSrc && videoPathMigrations[ref.videoSrc]) {
+                        MAVI_TIK_REFERENCES[id].videoSrc = videoPathMigrations[ref.videoSrc];
+                        videoMigrated = true;
+                    }
+                }
+                if (videoMigrated) {
+                    try { localStorage.setItem("mavitik_custom_refs", JSON.stringify(MAVI_TIK_REFERENCES)); } catch(e){}
+                }
 
                 // İçerik çekimlerine son eklenen videoyu ve 16:9 estetik kapak görsellerini senkronize et
                 if (!MAVI_TIK_REFERENCES["icerik-cekimi-1"] || !MAVI_TIK_REFERENCES["icerik-cekimi-1"].videoSrc || MAVI_TIK_REFERENCES["icerik-cekimi-1"].videoSrc.includes("#") || MAVI_TIK_REFERENCES["icerik-cekimi-1"].poster.includes("ref-urun-1.jpg")) {

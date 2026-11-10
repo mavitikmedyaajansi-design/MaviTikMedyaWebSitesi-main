@@ -1,4 +1,4 @@
-﻿// ===== APP.JS - Mavi Tik Medya Video Galeri =====
+// ===== APP.JS - Mavi Tik Medya Video Galeri =====
 
 document.addEventListener('DOMContentLoaded', () => {
     const galleryGrid = document.getElementById('gallery-grid');
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         customVideos.push({
                             title: r.title,
                             description: r.desc || r.client || '',
-                            src: r.videoSrc && r.videoSrc.startsWith('videolar/') ? '../' + r.videoSrc : (r.videoSrc || ''),
+                            src: r.videoSrc && r.videoSrc.startsWith('assets/videos/') ? '../' + r.videoSrc : (r.videoSrc && r.videoSrc.startsWith('videolar/') ? '../assets/videos/' + r.videoSrc.replace('videolar/', '') : (r.videoSrc || '')),
                             category: r.category || 'emlak',
                             date: '2026-10-31',
                             duration: '4K UHD'

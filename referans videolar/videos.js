@@ -20,8 +20,7 @@
  *   "qrmenu"   → QR Menü Sistemlerimiz
  *   "website"  → Web Sitelerimiz
  *
- * NOT: Video dosyaları "referans videolar/videos/" klasörüne taşınmalıdır.
- * Şu an videolar "../videolar/" dizinindedir; gerekirse yolu güncelleyin.
+ * NOT: Video dosyaları "assets/videos/" klasöründedir.
  * =====================================
  */
 
@@ -32,7 +31,7 @@ const VIDEOS = [
     {
         title: "İstedikleri Şeyler Farklı Ama Mantık Aynı",
         description: "Sosyal medya ve reels formatında özgün içerik çekimi. Viral potansiyelli 9:16 dikey video.",
-        src: "../videolar/icerik-cekimi-1.mp4",
+        src: "../assets/videos/icerik-cekimi-1.mp4",
         category: "icerik",
         date: "2026-11-09",
         duration: "9:16 Reels"
@@ -43,7 +42,7 @@ const VIDEOS = [
     {
         title: "Evsan Gayrimenkul • Emlak & Mimari Çekimi",
         description: "Evsan Gayrimenkul için Mavi Tik Medya Ajansı tarafından hazırlanan 4K profesyonel emlak ve mimari tanıtım çekimi.",
-        src: "../videolar/emlak-cekimi.mp4",
+        src: "../assets/videos/emlak-cekimi-1.mp4",
         category: "emlak",
         date: "2026-10-31",
         duration: "4K UHD"
@@ -51,7 +50,7 @@ const VIDEOS = [
     {
         title: "Evsan Gayrimenkul • Lüks Konut & Rezidans Çekimi",
         description: "Evsan Gayrimenkul portföyü için hazırlanan sinematik rezidans ve lüks yaşam tanıtım filmi.",
-        src: "../videolar/emlak-cekimi-2.mp4",
+        src: "../assets/videos/emlak-cekimi-2.mp4",
         category: "emlak",
         date: "2026-10-31",
         duration: "4K UHD"
@@ -62,7 +61,7 @@ const VIDEOS = [
     {
         title: "Ürün Çekimi",
         description: "Sinematik ürün tanıtım ve reklam çekimi.",
-        src: "../videolar/urun-cekimi.MOV",
+        src: "../assets/videos/urun-cekimi-1.mov",
         category: "urun",
         date: "2026-10-31",
         duration: ""
@@ -73,7 +72,7 @@ const VIDEOS = [
     {
         title: "Mekan / Etkinlik Çekimi",
         description: "Mavi Tik Medya Ajansı mekan ve etkinlik tanıtım çekimi.",
-        src: "../videolar/WhatsApp-Video-2026-10-31-at-18.51.30.mp4",
+        src: "../assets/videos/mekan-cekimi-1.mp4",
         category: "mekan",
         date: "2026-10-31",
         duration: ""
@@ -84,7 +83,7 @@ const VIDEOS = [
      * ,{
      *     title: "Video Adı",
      *     description: "Açıklama",
-     *     src: "../videolar/dosya.mp4",
+     *     src: "../assets/videos/dosya.mp4",
      *     category: "emlak",   // emlak | mekan | urun | qrmenu | website
      *     date: "2026-11-01",
      *     duration: "02:15"
